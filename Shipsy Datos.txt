@@ -1,0 +1,94 @@
+--DATOS
+
+-- Insertar datos en la tabla Ciudades
+INSERT INTO Ciudades (nombre, codigo) VALUES
+    ('Santo Domingo', 'SDQ'),
+    ('Santiago', 'STI'),
+    ('San Cristóbal', 'SC'),
+    ('Samaná', 'SAM'),
+    ('Monte Plata', 'MP'),
+    ('San Pedro de Macorís', 'SPM'),
+    ('Constanza', 'CON'),
+    ('La Vega', 'LV'),
+    ('Palenque', 'PAL'),
+    ('Guerra', 'GUA'),
+    ('Boca Chica', 'BC'),
+    ('San Isidro', 'SI');
+	
+	
+-- Insertar datos en la tabla Usuarios
+INSERT INTO Usuarios (nombre, telefono, rol) VALUES
+    ('Fanny Brito', '829-761-4719', 'admin'),
+    ('Julio Martínez', '829-214-1254', 'mensajero'),
+    ('Moisés Santos', '809-315-5487', 'mensajero'),
+    ('Wascar Ledesma', '849-817-2536', 'mensajero'),
+    ('Jomira de Los Santos', '809-365-4812', 'mensajero'),
+    ('Pablo Almirante', '829-303-1907', 'mensajero'),
+    ('Niuver Cansino', '809-414-2073', 'mensajero'),
+    ('Carla Valdez', '829-819-5585', 'mensajero'),
+    ('Jonny Castillo', '849-315-7714', 'mensajero'),
+    ('Corina Ramos', '809-588-0714', 'mensajero'),
+    ('Alejandro Beltré', '849-323-4554', 'mensajero'),
+    ('Nicolás Batista', '829-237-1685', 'mensajero');
+	
+	
+	-- Insertar datos en la tabla Clientes
+INSERT INTO Clientes (nombre, direccion, telefono, balance) VALUES
+    ('Miguelina Arduey', 'Calle 1, Santo Domingo', '809-345-6789', 0),
+    ('José Romero', 'Calle 2, Santiago', '829-416-7290', 0),
+    ('Patricia Alvarado', 'Calle 3, San Cristóbal', '849-531-6701', 0),
+    ('Joaquín Santana', 'Calle 4, Samaná', '829-584-3268', 0),
+    ('Lucía Matos', 'Calle 5, Monte Plata', '809-707-9258', 0),
+    ('Jovanny Pereira', 'Calle 6, San Pedro de Macorís', '829-815-2154', 0),
+    ('Miguel Franco', 'Calle 7, Constanza', '809-910-2515', 0),
+    ('Junior Ramírez', 'Calle 8, La Vega', '849-788-4165', 0),
+    ('Víctor Palacio', 'Calle 9, Palenque', '809-255-4225', 0),
+    ('Susana Valdera', 'Calle 10, Guerra', '829-731-1792', 0),
+    ('Bianca Mejía', 'Calle 11, Boca Chica', '809-362-2658', 0);
+	
+	
+-- Insertar datos en la tabla Envios
+INSERT INTO Envios (cliente_id, mensajero_id, ciudad_id, costo, fecha_salida, fecha_entrega, status) VALUES
+    (1, 2, 3, 123.45, '2023-08-28', NULL, 'pendiente'),
+    (3, 4, 2, 234.56, '2023-09-15', '2023-09-18', 'entregado'),
+    (5, 6, 1, 345.67, '2023-08-29', NULL, 'cancelado'),
+    (7, 8, 5, 456.78, '2023-09-06', NULL, 'pendiente'),
+    (9, 10, 4, 567.89, '2023-09-05', '2023-09-10', 'entregado'),
+    (11, 1, 3, 678.90, '2023-09-03', NULL, 'cancelado'),
+    (2, 3, 7, 789.01, '2023-08-27', NULL, 'pendiente'),
+    (4, 5, 6, 890.12, '2023-08-26', '2023-09-03', 'entregado'),
+    (6, 7, 1, 901.23, '2023-09-02', NULL, 'cancelado'),
+    (8, 9, 4, 123.45, '2023-08-31', NULL, 'pendiente'),
+    (10, 11, 5, 234.56, '2023-09-07', '2023-09-11', 'entregado'),
+    (1, 2, 6, 345.67, '2023-08-30', NULL, 'cancelado'),
+    (3, 4, 2, 456.78, '2023-09-01', NULL, 'pendiente'),
+    (5, 6, 3, 567.89, '2023-08-28', '2023-09-04', 'entregado'),
+    (7, 8, 7, 678.90, '2023-08-29', NULL, 'cancelado'),
+    (9, 10, 4, 789.01, '2023-08-26', NULL, 'pendiente'),
+    (11, 1, 5, 890.12, '2023-09-05', '2023-09-14', 'entregado'),
+    (2, 3, 1, 901.23, '2023-09-04', NULL, 'cancelado'),
+    (4, 5, 3, 123.45, '2023-08-31', NULL, 'pendiente'),
+    (6, 7, 7, 234.56, '2023-09-02', NULL, 'pendiente');
+
+-- Insertar datos en la tabla Pagos
+INSERT INTO Pagos (monto, fecha, forma, envio_id) VALUES
+    (123.45, '2023-08-28', 'efectivo', 1),
+    (234.56, '2023-09-15', 'tarjeta', 2),
+    (345.67, '2023-08-29', 'transferencia', 3),
+    (456.78, '2023-09-06', 'efectivo', 4),
+    (567.89, '2023-09-05', 'tarjeta', 5),
+    (678.90, '2023-09-03', 'transferencia', 6),
+    (789.01, '2023-08-27', 'efectivo', 7),
+    (890.12, '2023-08-26', 'tarjeta', 8),
+    (901.23, '2023-09-02', 'transferencia', 9),
+    (123.45, '2023-08-31', 'efectivo', 10),
+    (234.56, '2023-09-07', 'tarjeta', 11),
+    (345.67, '2023-08-30', 'transferencia', 12),
+    (456.78, '2023-09-01', 'efectivo', 13),
+    (567.89, '2023-08-28', 'tarjeta', 14),
+    (678.90, '2023-08-29', 'transferencia', 15),
+    (789.01, '2023-08-26', 'efectivo', 16),
+    (890.12, '2023-09-05', 'tarjeta', 17),
+    (901.23, '2023-09-04', 'transferencia', 18),
+    (123.45, '2023-08-31', 'efectivo', 19),
+    (234.56, '2023-09-02', 'tarjeta', 20);

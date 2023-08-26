@@ -1,0 +1,49 @@
+--ESTRUCTURA
+-- Tabla Usuarios
+CREATE TABLE IF NOT EXISTS Usuarios (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    telefono TEXT NOT NULL,
+    rol TEXT CHECK(rol IN ('admin', 'mensajero')) NOT NULL
+);
+
+-- Tabla Clientes
+CREATE TABLE IF NOT EXISTS Clientes (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    direccion TEXT NOT NULL,
+    telefono TEXT NOT NULL,
+    balance REAL NOT NULL
+);
+
+-- Tabla Ciudades
+CREATE TABLE IF NOT EXISTS Ciudades (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    codigo TEXT NOT NULL
+);
+
+-- Tabla Envios
+CREATE TABLE IF NOT EXISTS Envios (
+    id INTEGER PRIMARY KEY,
+    cliente_id INTEGER NOT NULL,
+    mensajero_id INTEGER NOT NULL,
+    ciudad_id INTEGER NOT NULL,
+    costo REAL NOT NULL,
+    fecha_salida DATE NOT NULL,
+    fecha_entrega DATE NULL,
+    status TEXT CHECK(status IN ('pendiente', 'entregado', 'cancelado')) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Clientes(id),
+    FOREIGN KEY (mensajero_id) REFERENCES Usuarios(id),
+    FOREIGN KEY (ciudad_id) REFERENCES Ciudades(id)
+);
+
+-- Tabla Pagos
+CREATE TABLE IF NOT EXISTS Pagos (
+    id INTEGER PRIMARY KEY,
+    monto REAL NOT NULL,
+    fecha TEXT NOT NULL,
+    forma TEXT CHECK(forma IN ('efectivo', 'tarjeta', 'transferencia')) NOT NULL,
+    envio_id INTEGER NOT NULL,
+    FOREIGN KEY (envio_id) REFERENCES Envios(id)
+);

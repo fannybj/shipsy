@@ -1,0 +1,26 @@
+
+--CONSULTAS
+--Consultar clientes
+SELECT * FROM Clientes;
+
+--Consultar Envios cancelados
+SELECT * FROM Envios WHERE status ="cancelado";
+
+--Consultar Envios ordenados por fecha de salida
+SELECT * FROM Envios ORDER BY fecha_salida;
+
+--Consultar los últimos cinco envíos en salir
+SELECT * FROM Envios ORDER BY fecha_salida DESC LIMIT 5;
+
+--Consultar envíos entregados
+SELECT e.fecha_salida AS Salida, e.fecha_entrega AS Llegada, cl.nombre AS Cliente, cl.direccion AS Dirección, cd.nombre
+AS Ciudad, mnsj.nombre AS Mensajero, p.monto as Pago FROM Envios e LEFT JOIN Clientes cl ON e.cliente_id=cl.id 
+LEFT JOIN Ciudades cd ON e.ciudad_id=cd.id LEFT JOIN Usuarios mnsj ON e.mensajero_id=mnsj.id LEFT JOIN
+Pagos p on p.envio_id=e.id WHERE e.status="entregado";
+
+
+--Consultar envíos pendientes
+SELECT e.fecha_salida AS Salida, cl.nombre AS Cliente, cl.direccion AS Dirección, cd.nombre
+AS Ciudad, mnsj.nombre AS Mensajero, e.costo AS Costo FROM Envios e LEFT JOIN Clientes cl ON e.cliente_id=cl.id 
+LEFT JOIN Ciudades cd ON e.ciudad_id=cd.id LEFT JOIN Usuarios mnsj ON e.mensajero_id=mnsj.id  WHERE e.status="pendiente";
+
